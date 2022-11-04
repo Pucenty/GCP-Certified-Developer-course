@@ -1,0 +1,30 @@
+kubectl get pod logs
+kubectl logs POD_NAME
+kubectl delete deployments my-dep
+
+
+# Creating and Switching Workspaces
+
+mkdir -p clientx/k8s-hugo/
+
+
+File: clientx/k8s-hugo/ns-hugo-site.yaml
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: hugo-site
+
+
+  The manifest file declares the version of the API in use, the kind of resource that is being defined, and metadata about the resource. All manifest files should provide this information.
+The key-value pair name: hugo-site defines the namespace object’s unique name.
+
+Create the namespace from the ns-hugo-site.yaml manifest.
+
+kubectl create -f clientx/k8s-hugo/ns-hugo-site.yaml
+
+View all available namespaces in your cluster:
+
+kubectl get namespaces
+
+kubectl config set-context --current --namespace=<NAME>
