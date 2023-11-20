@@ -7,4 +7,8 @@ export PROJECT_ID=polar-automata-405407
 gcloud config set project $PROJECT_ID
 gcloud config list
 
+# Setup properties
 ~/cloudshell_open/spinnaker-for-gcp/scripts/install/setup_properties.sh
+
+# Install
+~/cloudshell_open/spinnaker-for-gcp/scripts/install/setup.sh
