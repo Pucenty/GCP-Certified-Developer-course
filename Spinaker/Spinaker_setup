@@ -2,3 +2,7 @@ git config --global user.email \
     "pucenty@example.com"
 git config --global user.name \
     "Pucenty"
+
+export PROJECT_ID=polar-automata-405407
+gcloud config set project $PROJECT_ID
+gcloud config list
