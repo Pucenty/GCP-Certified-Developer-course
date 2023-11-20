@@ -3,7 +3,7 @@ git config --global user.email \
 git config --global user.name \
     "Pucenty"
 
-export PROJECT_ID=polar-automata-405407
+export PROJECT_ID=vocal-framework-405706
 gcloud config set project $PROJECT_ID
 gcloud config list
 
