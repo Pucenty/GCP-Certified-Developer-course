@@ -1,0 +1,2 @@
+Private Logs viewer:
+Private Logs Viewer gives read access to all logs, including Data Access and Access Transparency logs.
