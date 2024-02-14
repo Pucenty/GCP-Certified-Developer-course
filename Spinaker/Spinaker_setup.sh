@@ -6,7 +6,7 @@ git config --global user.name \
 # export PROJECT_ID=vocal-framework-405706
 export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
 echo "PROJECT_ID=$PROJECT_ID"
-echo $PROJECT_ID
+
 gcloud config set project $PROJECT_ID
 gcloud config list
 
