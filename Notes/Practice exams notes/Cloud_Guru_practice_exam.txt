@@ -32,6 +32,29 @@ Third party metrics (like Apache) require the monitoring agent to be installed.
 Selec
 
 SLI/SLO/SLA
+SLI<=SLO
+or
+(lower bound <= SLI <= upper bound) = SLO
+
+Example SLIs:
+request latency
+failure rate - unsuccessful requests/all requests
+batch Throughput - propotion of time = data processing rate > treshhold
+
+4 Google Golden Signals
+
+Latency - time it takes for service to fulfill request
+Traffic - how much demand is directed at your service
+Errors - the rate at which your service fails
+Saturation - how close to fully utilized your resources are
 
 2xx status: 900,000 3xx status: 40,000 4xx status: 50,000 5xx status: 10,000
 HTTP 3xx status messages mean further action is needed to complete the request, so they are NOT good or valid events. The HTTP 4xx error indicates a syntax problem or a request that can't be fulfilled, so they are also NOT good or valid events. The HTTP 2xx status client code shows successful, valid, and good events. The HTTP 5xx server failure status code shows valid, but NOT good server events. This would mean that the SLI = ( 900,000 good events / 910,000 valid events) x 100%. That brings the SLI to 98.9%.  Reference: List of HTTP Status Codes https://en.wikipedia.org/wiki/List_of_HTTP_status_codes 
+
+Spinaker
+
+When using Spinnaker as a continuous delivery tool, how does Spinnaker control traffic to different versions of your Kubernetes application?
+
+Updates the existing production Replica Set for each new version deployed.
+
+Spinnaker updates existing staging and production Replica Sets with each new version of a deployed application.
