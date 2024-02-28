@@ -62,3 +62,14 @@ When using Spinnaker as a continuous delivery tool, how does Spinnaker control t
 Updates the existing production Replica Set for each new version deployed.
 
 Spinnaker updates existing staging and production Replica Sets with each new version of a deployed application.
+
+Retention polices:
+
+Metrics - 24 months
+Logs:
+    Admin activity, System Event, Access Transparency:
+    400 days (non-configurable)
+All other logs:
+    30 days by default (configurable)
+
+
