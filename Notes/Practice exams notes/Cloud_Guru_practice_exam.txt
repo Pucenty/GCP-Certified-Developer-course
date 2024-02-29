@@ -85,7 +85,7 @@ can be system or user defined.
 Distribution metrics help track latency - it takes value from each event and show how these values are distributed over a set
 
 Services (in Monitoring) - help to easy set and monitor SLIs and SLOs and alert if not met
-Microserives running in your projects should be automatically enabled, but importing of exisitng SLIs and SLAs require Anthos service mesh, Istio or App Engine
+Microserives running in your projects on GKE or App Engine should be automatically enabled, but importing of exisitng SLIs and SLAs require Anthos service mesh, Istio or App Engine
 
 IAM roles
 
