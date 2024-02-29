@@ -64,8 +64,8 @@ Updates the existing production Replica Set for each new version deployed.
 Spinnaker updates existing staging and production Replica Sets with each new version of a deployed application.
 
 
-Metric - telemetry or signal data streamed from the sytem in real time
-Log - event or status that happened in a json/String format
+Metric (collectd) - telemetry or signal data streamed from the sytem in real time
+Log (fluentd) - event or status that happened in a json/String format. Agent needed to see syslog and i.e. Apache logs)
 
 Retention polices
 
@@ -81,6 +81,11 @@ All other logs:
 
 Log-based metrics - Metrics based on defined log entries: i.e nr of denied connection attempts from firewall rule
 can be system or user defined.
+
+Distribution metrics help track latency - it takes value from each event and show how these values are distributed over a set
+
+Services (in Monitoring) - help to easy set and monitor SLIs and SLOs and alert if not met
+Microserives running in your projects should be automatically enabled, but importing of exisitng SLIs and SLAs require Anthos service mesh, Istio or App Engine
 
 IAM roles
 
