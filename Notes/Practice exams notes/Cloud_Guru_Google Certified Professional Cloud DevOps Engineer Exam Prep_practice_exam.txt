@@ -92,3 +92,5 @@ IAM roles
 generic roles - can be assigned to both humans and SAs
 SA specific roles - can be assigned to SAs only (Logs writer, Logs bucket writer)
 
+
+
