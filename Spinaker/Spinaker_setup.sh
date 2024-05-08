@@ -3,7 +3,14 @@ git config --global user.email \
 git config --global user.name \
     "Pucenty"
 
+<<<<<<< HEAD:Spinaker/Spinaker_setup
 export PROJECT_ID=formal-office-406409
+=======
+# export PROJECT_ID=vocal-framework-405706
+export PROJECT_ID=$(gcloud config list --format 'value(core.project)')
+echo "PROJECT_ID=$PROJECT_ID"
+
+>>>>>>> e52b3caeece0141d241251000174022f60c41731:Spinaker/Spinaker_setup.sh
 gcloud config set project $PROJECT_ID
 gcloud config list
 
