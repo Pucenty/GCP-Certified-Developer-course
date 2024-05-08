@@ -3,14 +3,14 @@ git config --global user.email \
 git config --global user.name \
     "Pucenty"
 
-export PROJECT_ID=vocal-framework-405706
+export PROJECT_ID=formal-office-406409
 gcloud config set project $PROJECT_ID
 gcloud config list
 
 # Setup properties
 ~/cloudshell_open/spinnaker-for-gcp/scripts/install/setup_properties.sh
 
-# Update number of GKE nodes to 2 in properties file not to exceed the CPU quota
+# Update number of GKE nodes to 2 in properties file not to exceed the CPU quota /home/gclcoud_pucenty3/cloudshell_open/spinnaker-for-gcp/scripts/install/properties
 
 # Install
 ~/cloudshell_open/spinnaker-for-gcp/scripts/install/setup.sh
