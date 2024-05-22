@@ -107,3 +107,31 @@ Reference:
 
 Domain
 Applying site reliability engineering practices to a service
+
+
+
+Question 5Correct
+
+Your company currently has its containerised applications deployed in on-premises Kubernetes cluster. They have a plan to deploy a similar environment in GCP. The company is concerned about the amount of operations that will be needed to keep both environments in sync.
+
+Which of the following can be used to keep the Kubernetes environments in sync and provide a centralised multi-cluster management?
+A. CloudBuild.
+Your answer is correct
+B. Anthos.
+C. Jenkins.
+D. Cloud Source Repositories.
+Overall explanation
+
+Correct Answer: B
+
+    Option A is incorrect. CloudBuild cannot be used to keep environment in sync or for centralised multi-cluster management.
+
+    Option B is correct. Anthos is used for centralised multi-cluster management.
+
+    Option C is incorrect, Jenkins is a CI/CD tool and cannot be used to keep the environment in sync or for centralised multi-cluster management.
+
+    Option D are CORRECT because they can be used to connect two or more GCP VPCs to aid communications using private IP addresses.
+
+Reference:
+
+    https://cloud.google.com/anthos/clusters
