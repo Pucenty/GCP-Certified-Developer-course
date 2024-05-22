@@ -1,0 +1,11 @@
+Question 1Correct
+
+Your team is designing a new User-facing application to serve requests. Service Level Objectives (SLOs) have been set. Your team has been mandated to ensure the application always meets the set SLOs. Your Job is to choose Service Level Indicators (SLIs) that will allow your team effectively monitor the system so it does not breach the SLOs.
+
+Which of the following is Google's SRE suggested best practice for selecting SLIs?
+A. Choose as many SLIs as possible to cover all aspects of the system that users interact with.
+B. Choose as few SLIs as possible to reduce unactionable alerts
+Your answer is correct
+C. Discover what users expect from the system and choose SLIs to measure it.
+D. Allow users to give feedback on issues before choosing SLIs.
+
