@@ -228,3 +228,244 @@ Correct Answer: B
 Reference:
 
     https://cloud.google.com/source-repositories/docs/configure-access-control#roles_and_permissions_matrix
+
+Domain
+Building and implementing CI/CD pipelines for a service
+
+
+
+Question 9Incorrect
+
+Your team is running a production apache application on Google Compute Engine. You currently monitor the default metrics such as CPU utilization. You have a new requirement to monitor metrics from the Apache application in the Google Cloud console.
+
+What should you do? (Choose 2).
+Your selection is incorrect
+A. Install the fluentd agent on the Compute Engine instance.
+Correct selection
+B. Install the collectd agent on the Compute Engine instance.
+Correct selection
+C. Download the apache.conf, place it in the directory /etc/stackdriver/collectd.d/ and restart the monitoring agent.
+Your selection is incorrect
+D. Download the apache.conf, place it in the directory /etc/stackdriver/fluentd.d/ and restart the monitoring agent.
+E. Install the logging agent on the Compute Engine instance.
+Overall explanation
+
+Correct Answers: B and C
+
+    Options A, D and E are incorrect. Fluentd is used for logging and you have to install the monitoring (collectd) agent in order to monitor custom metrics.
+
+    Options B, C are CORRECT. you have to install the monitoring (collectd) agent in order to monitor custom metrics.
+
+Reference:
+
+    https://cloud.google.com/monitoring/agent/plugins/apache
+
+Domain
+Implementing service monitoring strategies
+
+Question 10Correct
+
+Your company is serving an application through the Compute Engine service behind a global load balancer. You have been tasked with monitoring the availability of the application and alert the on-call engineer if the application is unavailable for more than five minutes.
+
+What should you do with the least management overhead?
+A. Use Cloud Logging alerts to trigger a notification.
+B. Deploy a service to the instances to notify you when they fail.
+C. Create Uptime checks with the IP address of the individual VMs and an alerting policy to trigger a notification.
+Your answer is correct
+D. Create an Uptime check with the IP address of the load balancer and an alerting policy to trigger a notification.
+Overall explanation
+
+Correct Answer: D
+
+    Option A is incorrect, this has a lot of overhead such as installing the logging agent, configuring the right logs to be sent to Cloud Logging and creating log-based metrics.
+
+    Option B is incorrect, because a service on the instance may not work when the instance fails.
+
+    Option C is incorrect. This has a lot of overhead, assuming there are 50 instances, you will have to create an uptime check and alerting policy for each VM instance. Also if one VM is replaced it will trigger an alert which is counter-productive when the application is available.
+
+    Option D is CORRECT. Creating an uptime check to the load balancer has the least administrative overhead.
+
+Reference:
+
+    https://cloud.google.com/monitoring/uptime-checks
+
+Domain
+Implementing service monitoring strategies
+
+
+Question 11Incorrect
+
+Your company is planning to deploy a python application on Google App Engine Standard Environment. There is a requirement to continuously gather CPU usage information from your production application.
+
+What steps will help achieve this? Choose Two.
+Your selection is incorrect
+A. Enable the Cloud Trace API
+B. Install pip and Install the Trace package
+Correct selection
+C. Install the profiling agent on the virtual machines where your application runs, enable the Cloud Profiler API and add google-cloud-profiler to your requirements.txt file.
+D. Install pip and Install the Cloud Profiler package
+Your selection is correct
+E. Import googlecloudprofiler module and call the googlecloudprofiler. start function
+Overall explanation
+
+Correct Answers: C and E
+
+    Options A and B are incorrect. Cloud Trace is not used to continuously gather CPU and memory usage from applications.
+
+    Option D is incorrect, because you don’t have access to the underlying instance when using App Engine Standard Environment.
+
+    Options C and E are CORRECT. Cloud Profiler is used to continuously gather CPU and memory usage from applications. Cloud Profiler API needs to be enabled (if it is not already), added to your requirements.txt file (so it is downloaded), it also needs to be imported and started.
+
+References:
+
+    https://cloud.google.com/profiler/docs/about-profiler
+
+    https://cloud.google.com/profiler/docs/profiling-python?authuser=2#flexible-environment
+
+Domain
+Optimizing service performance
+
+
+Question 12Correct
+
+You provide support for a Python application in production on Compute Engine. In recent times there have been complaints about the slow response of the application. You want to investigate how requests propagate through your entire application.
+
+Which should you do?
+Your answer is correct
+A. Instrument your application and submit traces to Cloud Trace.
+B. Install the monitoring agent and send metrics to Cloud Monitoring.
+C. Install the logging agent and send logs to Cloud Logging.
+D. Create a dashboard to monitor the CPU utilization of the Compute Engine.
+Overall explanation
+
+Correct Answer: A
+
+    Options A is CORRECT. Cloud Trace shows how requests propagate through the different components (microservices or functions) of an application.
+
+    Options B and C are incorrect. The monitoring and logging agents do not show how requests propagate through the different component (microservices or functions) of an application
+
+    Option D is incorrect. CPU Utilization does not show how requests propagate through the different components (microservices or functions) of an application.
+
+Reference:
+
+    https://cloud.google.com/trace/docs/setup
+
+Domain
+Optimizing service performance
+
+
+
+Question 13Incorrect
+
+Your team is developing an application that will be deployed to production. During the load testing of the application there were application failures, infrastructure issues, and some capacity issues which were resolved and documented for reference in future incidents.
+
+Which of the following is not a recommended practice for Incident management?
+A. Focus on restoring service during incidents.
+Your answer is incorrect
+B. Encourage team members to be familiar with each role in the incident management process.
+C. Develop and document your incident management procedures in advance.
+Correct answer
+D. Prioritize root-cause analysis during incidents.
+Overall explanation
+
+Correct Answer: D
+
+    Options A, B & C are incorrect. These are Google SRE’s best practices for Incident Management which include prioritizing service restoration during an incident, documenting incident management procedures in advance and encouraging team members to be familiar with each role in the process.
+
+    Option D is CORRECT. Best practice is to prioritize restoring service before root-cause investigations.
+
+Reference:
+
+    https://sre.google/sre-book/managing-incidents/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+Question 14Correct
+
+Your team is creating an incident management procedure which will be a guide for your team during incidents. Part of Google's SRE incident management best practice is the separation of responsibilities.
+
+Which of the following responsibilities is not essential during an incident?
+A. The person responsible for assigning responsibilities according to need and priority.
+B. The person or team responsible for modifying the system during an incident.
+C. The public face of the incident response task force.
+Your answer is correct
+D. The person who created the incident management procedure.
+Overall explanation
+
+Correct Answer: D
+
+    Options A, B & C are incorrect. These roles represent the Incident Commander, Operations Lead and Communications lead which are the essential roles for incident management.
+
+    Options D is CORRECT. Creating the incident management procedure is a team effort so anyone can use it when an incident occurs.
+
+Reference:
+
+    https://sre.google/sre-book/managing-incidents/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+Question 15Incorrect
+
+Your team recently pushed an update to production. Several customers are now complaining that the service is taking too long to respond.
+
+What should you do first following Google's SRE best practice for effective troubleshooting?
+A. Try to figure out the severity of the issue.
+Correct answer
+B. Submit the Problem Report.
+Your answer is incorrect
+C. Make the system work as well as it can while you troubleshoot.
+D. Review the application logs.
+Overall explanation
+
+Correct Answer: B
+
+    Options A, C & D are incorrect because according to Google’s effective troubleshooting guide it is not the first thing to do.
+
+    Options B is CORRECT. According to Google’s effective troubleshooting guide it is the first thing to do.
+
+Reference:
+
+    https://sre.google/sre-book/effective-troubleshooting/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+
+Question 16Incorrect
+
+Your team is managing multiple Projects with different applications. You have been asked to centralize all billing data for the projects for ease of analysis.
+
+What steps should you take, following Google's best practice? Choose Two.
+Correct selection
+A. Create a separate Project for billing and restrict access to this Project using roles.
+Your selection is incorrect
+B. Export Cloud Billing data to a file in a Cloud Storage bucket in the billing Project.
+C. Export Cloud Billing data to Bigtable in the billing Project.
+Your selection is correct
+D. Export Cloud Billing data to BigQuery dataset in the billing Project.
+E. Export Cloud Billing data to Cloud PubSub in the billing Project.
+Overall explanation
+
+Correct Answers: A and D
+
+    Options A & D are CORRECT. Google suggests the creation of a separate Project for billing data and creating billing export to BigQuery for analysis or visualization using Data Studio.
+
+    Options B is incorrect. This option is deprecated.
+
+    Options C and E are incorrect. This is not possible within GCP.
+
+References:
+
+    https://cloud.google.com/billing/docs/how-to/export-data-bigquery
+
+    https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup
+
+    https://cloud.google.com/billing/docs/how-to/export-data-file
+
+Domain
+Optimizing service performance
