@@ -9,3 +9,74 @@ Your answer is correct
 C. Discover what users expect from the system and choose SLIs to measure it.
 D. Allow users to give feedback on issues before choosing SLIs.
 
+Overall explanation
+
+Correct Answer: C
+
+    Option A is incorrect, because choosing too many indicators makes it hard to pay the right level of attention to the indicators that matter
+
+    Option B is incorrect, because choosing too few may leave significant behaviours of your system unexamined.
+
+    Option C is CORRECT. Google’s recommended approach is an understanding of what your users want from the system will inform the judicious selection of a few indicators.
+
+    Option D is incorrect, because it means the system isn’t monitored which is not recommended.
+
+Reference:
+
+    https://sre.google/sre-book/service-level-objectives/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+Question 2Correct
+
+Your team manages an application serving a global audience. A recent update caused a service downtime. You have been designated as the Incident commander.
+
+Which of the following should not be in the Incident Document according to Google SRE's best practices?
+A. Incident timeline.
+B. List of Actions carried out to restore the service.
+Your answer is correct
+C. The developers responsible for the update.
+D. Command hierarchy.
+Overall explanation
+
+Correct Answer: C
+
+    Options A, B and D are incorrect because it is a Google SRE best practice that those information are in the live Incident State Document as the service is being restored .
+
+    Option C is CORRECT, this should not be in the document to promote a blameless culture.
+
+Reference:
+
+    https://sre.google/sre-book/incident-document/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+
+Question 3Correct
+
+You are helping with the design of a data processing pipeline for a company. Data is streamed from different devices into the pipeline and then processed before it is loaded into the final storage for analytic use.  You want to identify minimal Service Level Indicators (SLIs) for the pipeline to ensure that the data in the final storage is up to date.
+
+Which SLI should not be part of your consideration?
+A. Throughput.
+B. Latency.
+C. Correctness.
+Your answer is correct
+D. Durability.
+Overall explanation
+
+Correct Answer: D
+
+    Option D is CORRECT, this is SLI provides no monitoring value for the data processing pipeline.
+
+    Options A, B & C are incorrect because they are recommended SLIs for big data systems. Throughput shows speed of processing and latency shows total time to process a request. Correctness measures the accuracy of results returned.
+
+Reference:
+
+    https://sre.google/sre-book/service-level-objectives/
+
+Domain
+Applying site reliability engineering practices to a service
