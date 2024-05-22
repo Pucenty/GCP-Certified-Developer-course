@@ -135,3 +135,96 @@ Correct Answer: B
 Reference:
 
     https://cloud.google.com/anthos/clusters
+
+
+    Domain
+Building and implementing CI/CD pipelines for a service
+
+
+
+Question 6Incorrect
+
+Your company has tasked you with setting up a Continuous Integration pipeline. When code is committed to the source repository, the pipeline will build docker containers to be pushed to Container Registry and non-container artifacts to be pushed to Cloud Storage.
+
+How would you accomplish this? Choose Two.
+Your selection is correct
+A. Add an images field, that specifies the docker images to be pushed to Artifact Registry or Container Registry, to the Cloud Build config file.
+B. Add an artifacts field, that specifies the docker images to be pushed to Artifact Registry or Container Registry, to the source repository config file.
+Correct selection
+C. Add an artifacts field, that specifies the non-container artifacts to be stored in Cloud Storage, to the Cloud Build config file.
+D. Add an images field, that specifies the non-container artifacts to be stored in Cloud Storage, to the source repository config file.
+E. Add an options field, that specifies the non-container artifacts to be stored in Cloud Storage, to the source repository config file.
+Overall explanation
+
+Correct Answers: A and C
+
+    Options A and C are CORRECT. The images field and artifacts field in the build config file specifies the docker images to be stored in the container registry and the non-container artifacts to be stored in Cloud storage respectively.
+
+    Options B, D & E are incorrect because there is nothing like a source repository config file.
+
+References:
+
+    Build configuration file schema - Images | Google Cloud
+
+    Build configuration file schema - Artifacts | Google Cloud
+
+Domain
+Building and implementing CI/CD pipelines for a service
+
+
+
+Question 7Correct
+
+You are tasked with designing an automated CI pipeline for building and pushing images to Container Registry. In the current system, developers have to issue build commands after code is pushed to the test branch in the source repository.
+
+What steps can you take to automate the build of the test branch with the least amount of management overhead?
+A. Add a cloud build config file when code is pushed to the branch. Create a trigger in Cloud Source Repository and select the event Push to a branch .
+Your answer is correct
+B. Add a cloud build config file when code is pushed to the branch. Create a trigger in Cloud Build and select the event Push to a branch .
+C. Add a cloud build config file when code is pushed to the branch. Create a trigger in Cloud Build and select the event Pull request .
+D. Create a cloud function that is triggered when code is committed to the cloud source repository.
+Overall explanation
+
+Correct Answer: B
+
+    Option A is incorrect, triggers are created in Cloud Build.
+
+    Option B is CORRECT because the correct trigger is the “Push to a branch” event that will trigger a build when developers push code to their cloud source repository branch.
+
+    Option C is incorrect, the requirement is automating the build when code is committed to the test branch, there was no mention of raising a pull request
+
+    Option D is incorrect, it has a lot of management overhead.
+
+Reference:
+
+    https://cloud.google.com/build/docs/automating-builds/create-manage-triggers#build_trigger
+
+Domain
+Building and implementing CI/CD pipelines for a service
+
+
+Question 8Correct
+
+Your company has deployed all its Cloud Source Repositories in a separate GCP Project. You have been tasked with granting permissions developers in the dev Project access to commit code to the dev repository in that Project.
+
+How can you achieve this according to Google's best practice of least privilege?
+A. Grant the developers the Source Repository Admin role at Project level.
+Your answer is correct
+B. Grant the developers the Source Repository Writer role at Repo level.
+C. Grant the developers the Source Repository Reader role at Project level.
+D. Grant the developers the Source Repository Admin role at Repo level.
+Overall explanation
+
+Correct Answer: B
+
+    Option A is incorrect. This is too permissive, does not follow least privilege best practice and grants access to all the repos in that Project.
+
+    Option B is CORRECT. This grants permissions at the repo level to list, clone, fetch and update repositories.
+
+    Option C is incorrect. This does not give permissions to update repositories.
+
+    Option D is incorrect. This is too permissive and does not follow least privilege best practice.
+
+Reference:
+
+    https://cloud.google.com/source-repositories/docs/configure-access-control#roles_and_permissions_matrix
