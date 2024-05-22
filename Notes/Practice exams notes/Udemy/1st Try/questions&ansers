@@ -80,3 +80,26 @@ Reference:
 
 Domain
 Applying site reliability engineering practices to a service
+
+
+Question 4Correct
+
+You are part of the SRE team tasked with writing a postmortem of an outage for one of the services your team manages.
+
+Which of these should not be a part of the creation of the postmortem document according to the Google's SRE best practices?
+A. Root cause analysis.
+B. Collaboration and Knowledge sharing.
+Your answer is correct
+C. Unreviewed postmortem.
+D. Outlining preventive actions.
+Overall explanation
+
+Correct Answer: C
+
+    Options A, B & D are incorrect because they are part of the process for creating a postmortem, which includes figuring out what caused the issues and how to prevent it, also it is a collaborative process with the output shared.
+
+    Option C is CORRECT because according to Google’s SRE best practices, all postmortems should be reviewed as part of the culture of learning.
+
+Reference:
+
+    https://sre.google/sre-book/postmortem-culture/
