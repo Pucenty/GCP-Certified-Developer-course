@@ -1,0 +1,613 @@
+Question 1Correct
+
+Your team is designing a new User-facing application to serve requests. Service Level Objectives (SLOs) have been set. Your team has been mandated to ensure the application always meets the set SLOs. Your Job is to choose Service Level Indicators (SLIs) that will allow your team effectively monitor the system so it does not breach the SLOs.
+
+Which of the following is Google's SRE suggested best practice for selecting SLIs?
+A. Choose as many SLIs as possible to cover all aspects of the system that users interact with.
+B. Choose as few SLIs as possible to reduce unactionable alerts
+Your answer is correct
+C. Discover what users expect from the system and choose SLIs to measure it.
+D. Allow users to give feedback on issues before choosing SLIs.
+
+Overall explanation
+
+Correct Answer: C
+
+    Option A is incorrect, because choosing too many indicators makes it hard to pay the right level of attention to the indicators that matter
+
+    Option B is incorrect, because choosing too few may leave significant behaviours of your system unexamined.
+
+    Option C is CORRECT. Google’s recommended approach is an understanding of what your users want from the system will inform the judicious selection of a few indicators.
+
+    Option D is incorrect, because it means the system isn’t monitored which is not recommended.
+
+Reference:
+
+    https://sre.google/sre-book/service-level-objectives/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+Question 2Correct
+
+Your team manages an application serving a global audience. A recent update caused a service downtime. You have been designated as the Incident commander.
+
+Which of the following should not be in the Incident Document according to Google SRE's best practices?
+A. Incident timeline.
+B. List of Actions carried out to restore the service.
+Your answer is correct
+C. The developers responsible for the update.
+D. Command hierarchy.
+Overall explanation
+
+Correct Answer: C
+
+    Options A, B and D are incorrect because it is a Google SRE best practice that those information are in the live Incident State Document as the service is being restored .
+
+    Option C is CORRECT, this should not be in the document to promote a blameless culture.
+
+Reference:
+
+    https://sre.google/sre-book/incident-document/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+
+Question 3Correct
+
+You are helping with the design of a data processing pipeline for a company. Data is streamed from different devices into the pipeline and then processed before it is loaded into the final storage for analytic use.  You want to identify minimal Service Level Indicators (SLIs) for the pipeline to ensure that the data in the final storage is up to date.
+
+Which SLI should not be part of your consideration?
+A. Throughput.
+B. Latency.
+C. Correctness.
+Your answer is correct
+D. Durability.
+Overall explanation
+
+Correct Answer: D
+
+    Option D is CORRECT, this is SLI provides no monitoring value for the data processing pipeline.
+
+    Options A, B & C are incorrect because they are recommended SLIs for big data systems. Throughput shows speed of processing and latency shows total time to process a request. Correctness measures the accuracy of results returned.
+
+Reference:
+
+    https://sre.google/sre-book/service-level-objectives/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+Question 4Correct
+
+You are part of the SRE team tasked with writing a postmortem of an outage for one of the services your team manages.
+
+Which of these should not be a part of the creation of the postmortem document according to the Google's SRE best practices?
+A. Root cause analysis.
+B. Collaboration and Knowledge sharing.
+Your answer is correct
+C. Unreviewed postmortem.
+D. Outlining preventive actions.
+Overall explanation
+
+Correct Answer: C
+
+    Options A, B & D are incorrect because they are part of the process for creating a postmortem, which includes figuring out what caused the issues and how to prevent it, also it is a collaborative process with the output shared.
+
+    Option C is CORRECT because according to Google’s SRE best practices, all postmortems should be reviewed as part of the culture of learning.
+
+Reference:
+
+    https://sre.google/sre-book/postmortem-culture/
+
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+
+Question 5Correct
+
+Your company currently has its containerised applications deployed in on-premises Kubernetes cluster. They have a plan to deploy a similar environment in GCP. The company is concerned about the amount of operations that will be needed to keep both environments in sync.
+
+Which of the following can be used to keep the Kubernetes environments in sync and provide a centralised multi-cluster management?
+A. CloudBuild.
+Your answer is correct
+B. Anthos.
+C. Jenkins.
+D. Cloud Source Repositories.
+Overall explanation
+
+Correct Answer: B
+
+    Option A is incorrect. CloudBuild cannot be used to keep environment in sync or for centralised multi-cluster management.
+
+    Option B is correct. Anthos is used for centralised multi-cluster management.
+
+    Option C is incorrect, Jenkins is a CI/CD tool and cannot be used to keep the environment in sync or for centralised multi-cluster management.
+
+    Option D are CORRECT because they can be used to connect two or more GCP VPCs to aid communications using private IP addresses.
+
+Reference:
+
+    https://cloud.google.com/anthos/clusters
+
+
+    Domain
+Building and implementing CI/CD pipelines for a service
+
+
+
+Question 6Incorrect
+
+Your company has tasked you with setting up a Continuous Integration pipeline. When code is committed to the source repository, the pipeline will build docker containers to be pushed to Container Registry and non-container artifacts to be pushed to Cloud Storage.
+
+How would you accomplish this? Choose Two.
+Your selection is correct
+A. Add an images field, that specifies the docker images to be pushed to Artifact Registry or Container Registry, to the Cloud Build config file.
+B. Add an artifacts field, that specifies the docker images to be pushed to Artifact Registry or Container Registry, to the source repository config file.
+Correct selection
+C. Add an artifacts field, that specifies the non-container artifacts to be stored in Cloud Storage, to the Cloud Build config file.
+D. Add an images field, that specifies the non-container artifacts to be stored in Cloud Storage, to the source repository config file.
+E. Add an options field, that specifies the non-container artifacts to be stored in Cloud Storage, to the source repository config file.
+Overall explanation
+
+Correct Answers: A and C
+
+    Options A and C are CORRECT. The images field and artifacts field in the build config file specifies the docker images to be stored in the container registry and the non-container artifacts to be stored in Cloud storage respectively.
+
+    Options B, D & E are incorrect because there is nothing like a source repository config file.
+
+References:
+
+    Build configuration file schema - Images | Google Cloud
+
+    Build configuration file schema - Artifacts | Google Cloud
+
+Domain
+Building and implementing CI/CD pipelines for a service
+
+
+
+Question 7Correct
+
+You are tasked with designing an automated CI pipeline for building and pushing images to Container Registry. In the current system, developers have to issue build commands after code is pushed to the test branch in the source repository.
+
+What steps can you take to automate the build of the test branch with the least amount of management overhead?
+A. Add a cloud build config file when code is pushed to the branch. Create a trigger in Cloud Source Repository and select the event Push to a branch .
+Your answer is correct
+B. Add a cloud build config file when code is pushed to the branch. Create a trigger in Cloud Build and select the event Push to a branch .
+C. Add a cloud build config file when code is pushed to the branch. Create a trigger in Cloud Build and select the event Pull request .
+D. Create a cloud function that is triggered when code is committed to the cloud source repository.
+Overall explanation
+
+Correct Answer: B
+
+    Option A is incorrect, triggers are created in Cloud Build.
+
+    Option B is CORRECT because the correct trigger is the “Push to a branch” event that will trigger a build when developers push code to their cloud source repository branch.
+
+    Option C is incorrect, the requirement is automating the build when code is committed to the test branch, there was no mention of raising a pull request
+
+    Option D is incorrect, it has a lot of management overhead.
+
+Reference:
+
+    https://cloud.google.com/build/docs/automating-builds/create-manage-triggers#build_trigger
+
+Domain
+Building and implementing CI/CD pipelines for a service
+
+
+Question 8Correct
+
+Your company has deployed all its Cloud Source Repositories in a separate GCP Project. You have been tasked with granting permissions developers in the dev Project access to commit code to the dev repository in that Project.
+
+How can you achieve this according to Google's best practice of least privilege?
+A. Grant the developers the Source Repository Admin role at Project level.
+Your answer is correct
+B. Grant the developers the Source Repository Writer role at Repo level.
+C. Grant the developers the Source Repository Reader role at Project level.
+D. Grant the developers the Source Repository Admin role at Repo level.
+Overall explanation
+
+Correct Answer: B
+
+    Option A is incorrect. This is too permissive, does not follow least privilege best practice and grants access to all the repos in that Project.
+
+    Option B is CORRECT. This grants permissions at the repo level to list, clone, fetch and update repositories.
+
+    Option C is incorrect. This does not give permissions to update repositories.
+
+    Option D is incorrect. This is too permissive and does not follow least privilege best practice.
+
+Reference:
+
+    https://cloud.google.com/source-repositories/docs/configure-access-control#roles_and_permissions_matrix
+
+Domain
+Building and implementing CI/CD pipelines for a service
+
+
+
+Question 9Incorrect
+
+Your team is running a production apache application on Google Compute Engine. You currently monitor the default metrics such as CPU utilization. You have a new requirement to monitor metrics from the Apache application in the Google Cloud console.
+
+What should you do? (Choose 2).
+Your selection is incorrect
+A. Install the fluentd agent on the Compute Engine instance.
+Correct selection
+B. Install the collectd agent on the Compute Engine instance.
+Correct selection
+C. Download the apache.conf, place it in the directory /etc/stackdriver/collectd.d/ and restart the monitoring agent.
+Your selection is incorrect
+D. Download the apache.conf, place it in the directory /etc/stackdriver/fluentd.d/ and restart the monitoring agent.
+E. Install the logging agent on the Compute Engine instance.
+Overall explanation
+
+Correct Answers: B and C
+
+    Options A, D and E are incorrect. Fluentd is used for logging and you have to install the monitoring (collectd) agent in order to monitor custom metrics.
+
+    Options B, C are CORRECT. you have to install the monitoring (collectd) agent in order to monitor custom metrics.
+
+Reference:
+
+    https://cloud.google.com/monitoring/agent/plugins/apache
+
+Domain
+Implementing service monitoring strategies
+
+Question 10Correct
+
+Your company is serving an application through the Compute Engine service behind a global load balancer. You have been tasked with monitoring the availability of the application and alert the on-call engineer if the application is unavailable for more than five minutes.
+
+What should you do with the least management overhead?
+A. Use Cloud Logging alerts to trigger a notification.
+B. Deploy a service to the instances to notify you when they fail.
+C. Create Uptime checks with the IP address of the individual VMs and an alerting policy to trigger a notification.
+Your answer is correct
+D. Create an Uptime check with the IP address of the load balancer and an alerting policy to trigger a notification.
+Overall explanation
+
+Correct Answer: D
+
+    Option A is incorrect, this has a lot of overhead such as installing the logging agent, configuring the right logs to be sent to Cloud Logging and creating log-based metrics.
+
+    Option B is incorrect, because a service on the instance may not work when the instance fails.
+
+    Option C is incorrect. This has a lot of overhead, assuming there are 50 instances, you will have to create an uptime check and alerting policy for each VM instance. Also if one VM is replaced it will trigger an alert which is counter-productive when the application is available.
+
+    Option D is CORRECT. Creating an uptime check to the load balancer has the least administrative overhead.
+
+Reference:
+
+    https://cloud.google.com/monitoring/uptime-checks
+
+Domain
+Implementing service monitoring strategies
+
+
+Question 11Incorrect
+
+Your company is planning to deploy a python application on Google App Engine Standard Environment. There is a requirement to continuously gather CPU usage information from your production application.
+
+What steps will help achieve this? Choose Two.
+Your selection is incorrect
+A. Enable the Cloud Trace API
+B. Install pip and Install the Trace package
+Correct selection
+C. Install the profiling agent on the virtual machines where your application runs, enable the Cloud Profiler API and add google-cloud-profiler to your requirements.txt file.
+D. Install pip and Install the Cloud Profiler package
+Your selection is correct
+E. Import googlecloudprofiler module and call the googlecloudprofiler. start function
+Overall explanation
+
+Correct Answers: C and E
+
+    Options A and B are incorrect. Cloud Trace is not used to continuously gather CPU and memory usage from applications.
+
+    Option D is incorrect, because you don’t have access to the underlying instance when using App Engine Standard Environment.
+
+    Options C and E are CORRECT. Cloud Profiler is used to continuously gather CPU and memory usage from applications. Cloud Profiler API needs to be enabled (if it is not already), added to your requirements.txt file (so it is downloaded), it also needs to be imported and started.
+
+References:
+
+    https://cloud.google.com/profiler/docs/about-profiler
+
+    https://cloud.google.com/profiler/docs/profiling-python?authuser=2#flexible-environment
+
+Domain
+Optimizing service performance
+
+
+Question 12Correct
+
+You provide support for a Python application in production on Compute Engine. In recent times there have been complaints about the slow response of the application. You want to investigate how requests propagate through your entire application.
+
+Which should you do?
+Your answer is correct
+A. Instrument your application and submit traces to Cloud Trace.
+B. Install the monitoring agent and send metrics to Cloud Monitoring.
+C. Install the logging agent and send logs to Cloud Logging.
+D. Create a dashboard to monitor the CPU utilization of the Compute Engine.
+Overall explanation
+
+Correct Answer: A
+
+    Options A is CORRECT. Cloud Trace shows how requests propagate through the different components (microservices or functions) of an application.
+
+    Options B and C are incorrect. The monitoring and logging agents do not show how requests propagate through the different component (microservices or functions) of an application
+
+    Option D is incorrect. CPU Utilization does not show how requests propagate through the different components (microservices or functions) of an application.
+
+Reference:
+
+    https://cloud.google.com/trace/docs/setup
+
+Domain
+Optimizing service performance
+
+
+
+Question 13Incorrect
+
+Your team is developing an application that will be deployed to production. During the load testing of the application there were application failures, infrastructure issues, and some capacity issues which were resolved and documented for reference in future incidents.
+
+Which of the following is not a recommended practice for Incident management?
+A. Focus on restoring service during incidents.
+Your answer is incorrect
+B. Encourage team members to be familiar with each role in the incident management process.
+C. Develop and document your incident management procedures in advance.
+Correct answer
+D. Prioritize root-cause analysis during incidents.
+Overall explanation
+
+Correct Answer: D
+
+    Options A, B & C are incorrect. These are Google SRE’s best practices for Incident Management which include prioritizing service restoration during an incident, documenting incident management procedures in advance and encouraging team members to be familiar with each role in the process.
+
+    Option D is CORRECT. Best practice is to prioritize restoring service before root-cause investigations.
+
+Reference:
+
+    https://sre.google/sre-book/managing-incidents/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+Question 14Correct
+
+Your team is creating an incident management procedure which will be a guide for your team during incidents. Part of Google's SRE incident management best practice is the separation of responsibilities.
+
+Which of the following responsibilities is not essential during an incident?
+A. The person responsible for assigning responsibilities according to need and priority.
+B. The person or team responsible for modifying the system during an incident.
+C. The public face of the incident response task force.
+Your answer is correct
+D. The person who created the incident management procedure.
+Overall explanation
+
+Correct Answer: D
+
+    Options A, B & C are incorrect. These roles represent the Incident Commander, Operations Lead and Communications lead which are the essential roles for incident management.
+
+    Options D is CORRECT. Creating the incident management procedure is a team effort so anyone can use it when an incident occurs.
+
+Reference:
+
+    https://sre.google/sre-book/managing-incidents/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+Question 15Incorrect
+
+Your team recently pushed an update to production. Several customers are now complaining that the service is taking too long to respond.
+
+What should you do first following Google's SRE best practice for effective troubleshooting?
+A. Try to figure out the severity of the issue.
+Correct answer
+B. Submit the Problem Report.
+Your answer is incorrect
+C. Make the system work as well as it can while you troubleshoot.
+D. Review the application logs.
+Overall explanation
+
+Correct Answer: B
+
+    Options A, C & D are incorrect because according to Google’s effective troubleshooting guide it is not the first thing to do.
+
+    Options B is CORRECT. According to Google’s effective troubleshooting guide it is the first thing to do.
+
+Reference:
+
+    https://sre.google/sre-book/effective-troubleshooting/
+
+Domain
+Applying site reliability engineering practices to a service
+
+
+
+Question 16Incorrect
+
+Your team is managing multiple Projects with different applications. You have been asked to centralize all billing data for the projects for ease of analysis.
+
+What steps should you take, following Google's best practice? Choose Two.
+Correct selection
+A. Create a separate Project for billing and restrict access to this Project using roles.
+Your selection is incorrect
+B. Export Cloud Billing data to a file in a Cloud Storage bucket in the billing Project.
+C. Export Cloud Billing data to Bigtable in the billing Project.
+Your selection is correct
+D. Export Cloud Billing data to BigQuery dataset in the billing Project.
+E. Export Cloud Billing data to Cloud PubSub in the billing Project.
+Overall explanation
+
+Correct Answers: A and D
+
+    Options A & D are CORRECT. Google suggests the creation of a separate Project for billing data and creating billing export to BigQuery for analysis or visualization using Data Studio.
+
+    Options B is incorrect. This option is deprecated.
+
+    Options C and E are incorrect. This is not possible within GCP.
+
+References:
+
+    https://cloud.google.com/billing/docs/how-to/export-data-bigquery
+
+    https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup
+
+    https://cloud.google.com/billing/docs/how-to/export-data-file
+
+Domain
+Optimizing service performance
+
+
+
+Your organization has recently decided to move its applications to the Cloud. The current CICD pipeline uses GitHub repositories for source code version control. You have been directed to proof-of-concept deployment linking GitHub to Cloud Build for image creation and deployment.
+
+What steps can you take to achieve this with minimal overhead? Choose TW0
+A. Create a new repository in Cloud Source Repository, Create a trigger in Cloud Build to automate the image creation, Clone the GitHub repository.
+Your selection is correct
+B. Connect Cloud Source Repository to an external repository like GitHub, Authorize Google Cloud Platform to grant read access to the GitHub repository, Create a build trigger in Cloud Build to automate the image creation.
+C. Commit code to the new repository in Cloud Source Repository.
+Your selection is incorrect
+D. Grant the Cloud Build service account the permissions to build the image.
+Correct selection
+E. Commit code to the repository in GitHub.
+Overall explanation
+
+Correct Answers: B and E
+
+    Options B & E are CORRECT. Connecting to an external repository such as GitHub and Bitbucket is possible in CSR and this reduces the overhead. Code is committed to GitHub and mirrored to CSR while triggers Cloud Build.
+
+    Options A, C, and D are incorrect. Creating a new repository creates overhead of cloning the GitHub and pushing to CSR. There are no permissions needed for Cloud Build to build the image.
+
+References:
+
+    https://cloud.google.com/source-repositories/docs/mirroring-a-github-repository
+
+    https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build
+
+
+    Question 5Incorrect
+
+You are designing an online gaming application. The web application allows users to select games and view leaderboards. Game scores are stored in a database. You want to identify the minimum Service Level Indicators (SLIs) for the application to ensure the leader board has the latest scores.
+
+What SLIs should you select?
+Your answer is incorrect
+A. Web Application - Durability, Database - Coverage,
+Correct answer
+B. Web Application - Availability, Latency Database - Availability.
+C. Web Application - Durability, Quality Database - Latency.
+D. Web Application - Coverage Database - Latency
+Overall explanation
+
+Correct Answer: B
+
+    Option B is CORRECT. This is the best SLI for the application. The web application is request-driven for which latency and availability are good SLIs. The database is a storage system, the recommended SLIs are latency, availability and durability.
+
+    Options A, C & D are incorrect. Durability and Coverage are not suitable SLIs for the web application which is request-driven. Coverage is a suitable SLI for batch processing systems, so it is not suitable for the database of the gaming application.
+
+Reference:
+
+    https://sre.google/sre-book/service-level-objectives/ (Indicator in Practice)
+
+Domain
+Applying site reliability engineering practices to a service
+
+Question 10Incorrect
+
+Your organization has created three monitoring workspaces called dev-workspace, test-workspace and prod-workspace. The workspaces monitor the Projects outlined below:
+
+    dev-workspace: dev-1, dev-2, dev-3
+
+    test-workspace: test-1, test-2
+
+    prod-workspace: prod-1, prod-b and prod-c
+
+You have been asked to monitor the project prod-1 alongside test-1 and test-2 in the same workspace.
+
+How will you achieve this?
+Correct answer
+A. Move the 'prod-1' project to the 'test-workspace', which will remove it from the 'prod-workspace'.
+B. The monitoring workspace of Projects cannot be updated after creation.
+C. Merge 'test-workspace' and 'prod-workspace'.
+Your answer is incorrect
+D. Add the 'prod-1' project to the 'test-workspace' and leave it in 'prod-workspace' as well.
+Overall explanation
+
+Correct Answer: A
+
+    Option A is CORRECT. A project can only be monitored by one workspace at any time.
+
+    Options B, C and D are incorrect. Monitoring workspaces of Projects can be updated after creation. Merging both workspaces will mean five projects being monitored in test-workspace instead of three.
+
+Reference:
+
+    https://cloud.google.com/monitoring/workspaces/manage
+
+Domain
+Implementing service monitoring strategies
+
+Question 11Incorrect
+
+Your company has several Google projects in its organisation. As part of the monitoring strategy, the projects will be added to specified workspaces. Your team has been assigned the task of creating the workspaces.
+
+Following the principle of least privilege, what IAM role would your team need to create workspaces?
+A. Assign the Project Editor role to the team in the Project where the monitoring workspace will be created.
+Correct answer
+B. Assign the Monitoring Editor role to the team in the Project where the monitoring workspace will be created.
+Your answer is incorrect
+C. Assign the Monitoring Admin role to the team in the Project where the monitoring workspace will be created.
+D. Assign the Project Owner role to the team in the Project where the monitoring workspace will be created
+Overall explanation
+
+Correct Answer: B
+
+    Option A is incorrect. Project Editor role does not have the required permissions.
+
+    Option B is CORRECT. The Monitoring Editor has the required permissions and is not too permissive.
+
+    Options C and D are incorrect. These roles are too permissive.
+
+Reference:
+
+    https://cloud.google.com/monitoring/workspaces/create
+
+
+
+The company wants to generate metrics from the logs for alerting purposes for that application alone.
+
+What IAM solution will help achieve the requirement following the principle of least privilege?   
+
+D. Assign the Logs Configuration Writer role to developers in the staging Project.
+
+You have set up the Logs sink to route logs to a Pub/Sub topic but no logs are  appearing in Elasticsearch.
+Which of the following could be the reason?
+B. The service account of the Logging sink has not been granted access to the Pub/Sub topic
+
+A. The cloudbuild.yaml was not placed in the same folder as the application source code
+D. The cloudbuild.json was not placed in the same folder as the application source code
+
+VPC Flow Logs was enabled on the production VPC and no vpc_flows logs are present in Cloud Logging.
+Which of the following could be the reason?
+D. Logging Exclusion filters could be blocking the vpc_flows log
+
+There is a new government regulation to keep the logs of all API calls made in the Production project for three years.
+C. Create a Logs Bucket with a retention period of 1095days. Create a new Logs Sink with the new Logs Bucket as destination and the inclusion filter of the _Required Sink .
+
+You need to track the number of requests Nginx has serviced.
+A. Enable Cloud Operations for Google Kubernetes Engine (GKE) in the Cluster Features.
+D. Install the necessary configuration files for Nginx to enable metrics collection.
+
+You have been tasked to capture all audit logs from the services used.
+C. Enable the Data Access audit logs for the services used.

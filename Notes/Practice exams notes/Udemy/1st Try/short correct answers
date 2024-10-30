@@ -1,0 +1,105 @@
+    D. In the Logs router of each project, create a sink with the logs bucket in the security project as destination and specify the Apache logs to exclude with a filter rate of 100.
+
+    A. Implement measures to mitigate the impact.
+
+    B. Assign the Monitoring Editor role to the team in the Project where the monitoring workspace will be created.
+
+    You want to identify minimal Service Level Indicators (SLIs) for the storage to ensure that the data in the storage can be read successfully. D. Durability.
+
+    You want to identify the minimum Service Level Indicators (SLIs) for the application to ensure the leader board has the latest scores. B. Web Application - Availability, Latency Database - Availability.
+
+
+    You are planning on deploying JVM using Compute Engine. You need to track the peak number of live threads in the instance.
+
+Which of the following can help you achieve this? CHOOSE TWO
+
+On the GCE instance, install the Cloud Monitoring Agent
+
+Install the necessary configuration files for JVM.
+
+
+The company wants to generate metrics from the logs for alerting purposes for that application alone. D. Assign the Logs Configuration Writer role to developers in the staging Project.
+
+You have set up the Logs sink to route logs to a Pub/Sub topic but no logs are  appearing in Elasticsearch. B. The service account of the Logging sink has not been granted access to the Pub/Sub topic
+
+A new developer has been tasked with creating the build config files. The Cloud Build process is failing. A. The cloudbuild.yaml was not placed in the same folder as the application source code D. The cloudbuild.json was not placed in the same folder as the application source code
+
+
+VPC Flow Logs was enabled on the production VPC and no vpc_flows logs are present in Cloud Logging.
+
+Add the following line google-python-cloud-debugger to the requirement.txt
+
+There is a new government regulation to keep the logs of all API calls made in the Production project for three years. C. Create a Logs Bucket with a retention period of 1095days. Create a new Logs Sink with the new Logs Bucket as destination and the inclusion filter of the _Required Sink.
+
+
+You are planning on deploying Nginx using Kubernetes Engine. You need to track the number of requests Nginx has serviced.
+A. Enable Cloud Operations for Google Kubernetes Engine (GKE) in the Cluster Features.
+C. Choose the System and workload logging and monitoring option in the Cluster Features.
+The monitoring agent is installed on GKE, all that you need to do is enable it and select the logging and monitoring type you want.
+
+You want to be able to specify a particular version of your application for deployment based on the release version tagged in source control. What should you do when you push the image?
+B. Supply the source control tag as a parameter within the image name.
+
+After the PRR analysis phase, you determine that the service cannot currently meet its Service Level Objectives (SLOs). You want to ensure that the service can meet its SLOs in production. What should you do next?
+C. Identify recommended reliability improvements to the service to be completed before handover.
+
+You want to capture these log entries in a secure location for later review and prevent them from leaking to Stackdriver Logging. What should you do?
+B. Use a Fluentd filter plugin with the Stackdriver Agent to remove log entries containing userinfo, and then copy the entries to a Cloud Storage bucket.
+
+The application writes its log information to /var/log/app_messages.log, and you want to send these log entries to Stackdriver Logging. What should you do?
+B. Deploy a Fluentd daemonset to GK
+
+You need to implement Jenkins for deploying application releases to GCP. 
+D. Implement Jenkins on Compute Engine virtual machines.
+
+they would rather have some content served instead of no content at all. You want to set a Service Level Objective (SLO) to ensure that the user experience does not degrade too much. What Service Level Indicator {SLI) should you use to measure this?
+B. An availability SLI: the ratio of healthy microservices to the total number of microservices
+
+
+You want to use Google Kubernetes Engine (GKE) to perform a phased rollout to half of the web server pods.
+A. Use a partitioned rolling update.
+
+
+You support a trading application written in Python and hosted on App Engine flexible environment. You want to customize the error information being sent to Stackdriver Error Reporting.
+D. Use the Stackdriver Error Reporting API to write errors from your application to ReportedErrorEvent, and then generate log entries with properly formatted error messages in Stackdriver Logging.
+no need to install error reporting library on App Engine Flex.
+
+
+
+You want to integrate with a third-party monitoring platform by performing a HTTP POST of the build information to a webhook. You want to minimize the development effort. What should you do?
+D. Create an Alert with a Webhook notification type.
+
+
+You notice that syslog is not showing up in the 'All logs' dropdown list of the Logs Viewer. What is the first thing you should do?
+
+D. SSH to the VM and execute the following commands on your VM: ps ax I grep fluentd
+
+You support a Node.js application running on Google Kubernetes Engine (GKE) in production. The application makes several HTTP requests to dependent applications. You want to anticipate which dependent applications might cause performance issues. What should you do?
+
+B. Instrument all applications with Stackdriver Trace and review inter-service HTTP requests.
+
+Your application images are built and pushed to Google Container Registry (GCR). You want to build an automated pipeline that deploys the application when the image is updated while minimizing the development effort. What should you do?
+
+B. Use Cloud Pub/Sub to trigger a Spinnaker pipeline.
+
+You use Cloud Build to build and deploy your application. You want to securely incorporate database credentials and other application secrets into the build pipeline. You also want to minimize the development effort. What should you do?
+
+D. Store a decryption key in a separate repository and grant Cloud Build access to the repository.
+
+You want to scale the deployment of the application's frontend using an appropriate Service Level Indicator (SLI). What should you do?
+
+C. Install the Stackdriver custom metrics adapter and configure a horizontal pod autoscaler to use the number of requests provided by the GCLB.
+
+The application is serving HTTP requests from users. You need to implement a solution that will reduce the network cost. What should you do?
+D. Configure a Google Cloud HTTP Load Balancer as Ingress.
+
+You have already implemented an availability Service Level Indicator (SLI) at the CLB level. However, you want to increase coverage in case of a potential load balancer misconfiguration. CDN failure, or other global networking catastrophe. Where should you measure this new SLI? Choose 2 answers
+
+B. Instrumentation coded directly in the client
+E. A synthetic client that periodically sends simulated user requests
+
+You want to prepare the application for the upcoming busy season. What should you do first to prepare for the busy season?
+A. Load teat the application to profile its performance for scaling.
+
+The application frontend and backend servers are located on different subnets in the environment's VPC. You suspect there is a malicious process communicating intermittently in your production frontend servers. You want to ensure that network traffic is captured for analysis. What should you do?
+D. Enable VPC Flow Logs on the testing and production VPC network frontend and backend subnets with a volume scale of 1.0. Apply changes in testing before production.
