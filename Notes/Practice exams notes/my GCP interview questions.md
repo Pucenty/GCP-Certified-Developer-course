@@ -213,7 +213,7 @@ Configures containers on the same host. Enables services that allow running and 
 
 - Docker Compose vs Docker Swarm
 
-Docker Swarm is a orchestration tool, that distributes stacks (deployments in K8) into swarm nodes with 'docker stack deploy' command. Takes configuration in yaml as deployment in Kubernetes.
+Docker Swarm is a orchestration tool, that distributes stacks (deployments in K8) into swarm nodes with 'docker stack deploy' command. Takes configuration in yaml as deployment in Kubernetes. When we do a "docker stack deploy" on an existing stack, it will deploy the changes as service updates.
 
 ## KUBERNETES/DOCKER SWARM
 
