@@ -207,6 +207,13 @@ You can use volumes/bind mounts edit code live inside running container
 
 
 
+## DOCKER COMPOSE
+
+Configures containers on the same host. Enables services that allow running and managing replicas of containers.
+
+- Docker Compose vs Docker Swarm
+
+Docker Swarm is a orchestration tool, that distributes stacks (deployments in K8) into swarm nodes with 'docker stack deploy' command. Takes configuration in yaml as deployment in Kubernetes.
 
 ## KUBERNETES/DOCKER SWARM
 
