@@ -179,15 +179,15 @@ RUN <command>   apt update && apt install python3	Executes any commands in a new
 CMD <command>   ["python", "my_script.py"] (argumenty w CMD są opcjonalne i mogą być pominięye, natomiast przy ENTRYPOINT wykonują się zawsze)  	Lets you define the default program that is run once you start the container based on this image. Each Dockerfile only has one CMD, and only the last CMD instance is respected when multiple exist.
 
 
-What does EXPOSE mean in a Dockerfile?
+- What does EXPOSE mean in a Dockerfile?
 
-CMD vs ENTRYPOINT, what's the difference?
+- CMD vs ENTRYPOINT, what's the difference?
 
 RUN stanza vs CMD/ENTRYPOINT - one runs at build time, the other one when container is launched
 
 
 
-How containers communicate within a Pod:
+- How containers communicate within a Pod:
 
     Shared Network Namespace: Containers in the same Pod share the same IP address and network ports. They can communicate with each other using localhost, as they are all part of the same network namespace.
 
@@ -206,6 +206,11 @@ How containers communicate within a Pod:
 You can use volumes/bind mounts edit code live inside running container
 
 
+- Are Docker containers always restarted automatically?
+
+No. You can specify restart policy to 'always' or 'on failure' in a Dockerfile or use specify a number of replicas with orchestration tool like Docker Swarm or K8 (or deploy Docker services with Docker Compose)
+
+- What is a headless service?
 
 ## DOCKER COMPOSE
 
@@ -220,23 +225,116 @@ Docker Swarm is a orchestration tool, that distributes stacks (deployments in K8
 
 - What are key components of Kubernetes
 - Describe what each of them does
+
+CLUSTERS: zonal/regional
+
+containers < pod < ReplicaSet < Deployment (describes desired decrarative state)/StatefulSet < Node < Node poll < Cluster
+
+Pod example:
+- monolyth app and a web server
+- an application and a database proxy
+
+
+Service - exposes a set of pods to a network via fixed IP. Provides built-in DNS name
+
+service types:
+- cluster IP - for internal communication between pods
+- loadbalancer - maps to Google cloud load balancer
+
+Ingress - a more customizable way to expose traffic
+You can have single load balancer instead of load balancer per every service
+
+routes traffic to services based on Ingress definitions
+front is still cloud load balancer
+Nginx Ingress controller a popular choice
+designed for HTTP/HTTPS apps
+
+
+DeamonSets - single pod per node i.e. custom metics services, monitoring services
+
+
+StatefulSet
+
+- maintains an identity for each deployed pod
+- guarantees the ordering and uniqueness of every pod
+- stable network identity and persistent storage
+- graceful deployment, scaling, updates
+- if we add headless service (that doesn't have clusterIP assigned) to spec it will assign a DNS name to pod
+
+Update strategies:
+rolling updates, can be partitioned, canary updates
+
+Finite tasks: jobs, cron jobs
+Init containers - runs before application container and separates startup code from app image
+
+
+
+ConfigMap - decouples configuration from image content
+Secrets - encodedonly by default, you can reference objects in secret manager for encryption
+
+
+kubectl apply -f
+
+Master node:
+- kube-apiserver - exposes the Kubernetes API, which the other Kubernetes components use to communicate with each other
+- cloud-controller-manager : enables interaction with the cloud
+- kube-controller-manager: The Kubernetes controller manager is responsible for running various controllers that monitor the state of the cluster, detect changes, and take corrective actions if needed
+- kube-scheduler: The Kubernetes scheduler assigns workloads to nodes based on resource requirements, node availability, and other factors.
+- etcd: Kubernetes key:value store storing configurations and state
+
+Worker nodes:
+- kubelet: Kubelet is the primary agent that runs on each node and communicates with the Kubernetes API server to receive instructions on what workloads to run.
+- kube-proxy: The Kubernetes proxy is responsible for managing the network traffic to and from the containers running on the node
+- container runtime: The container runtime is the software that runs the containers on the node. 
+
+Additional ones:
+- DNS: Kubernetes includes a built-in DNS service that allows containers to discover and communicate with each other by hostname.
+- Ingress Controller: The Kubernetes Ingress Controller is responsible for managing incoming network traffic to the cluster and routing it to the correct services.
+
+
+Liveness probes - makes sure K8s restarts unhealthy pods
+Startup probes
+readiness probles - some conditions must be met to start serving traffic to a pod
+
+
+DEPLOYMENT PATTERNS 
+
+- Rolling updates - creates new ReplicaSet, add new pods and removes old ones as new become serving new version of the traffic (you can specify a threshold of unhealthy pods)
+- Canary deployments - deploy new version only to a subset of pods (deploy prod deployment yaml and canary deployment as well with smaller number of replicas)
+- Blue/Green (just update selector in a Service)
+
+
+
+
 - Describe Kubernetes networking model
+
+
+
 - What happens if the network plugin is not installed, what state would nodes go in
 - How to add custom notes to deployment history to Kubernetes: kubectl annotate deployment nginx kubernetes.io/change-cause="version change to 1.16.0 to latest" --overwrite=true
 
-- What deployment strategies are availiable in Kubernetes?
 
 
-In this article, you will learn about the following Kubernetes deployment strategies:
 
-    Rolling deployment—the default strategy that allows you to update a set of pods without downtime. It replaces pods running the old version of the application with the new version, one by one.
-    Recreate deployment—an all-or-nothing method that lets you update an application instantly, with some downtime. It terminates all pods and replaces them with the new version.
-    Ramped slow rollout—rolls out replicas of the new version, while in parallel, shutting down old replicas. 
-    Best-effort controlled rollout—specifies a “max unavailable” parameter which indicates what percentage of existing pods can be unavailable during the upgrade, enabling the rollout to happen much more quickly.
-    Blue/green deployment—a deployment strategy in which you create two separate, but identical environments, and over to the new environment.
-    Canary deployment—uses a progressive delivery approach, with one version of the application serving most users, and another, newer version serving a small pool of test users. The test deployment is rolled out to more users if it is successful.
-    Shadow deployment—the new version of the application (the “shadow” version) receives real-world traffic alongside the current version, but without affecting end-users.
-    A/B testing—rolls out two or more versions of an application feature to a subset of users simultaneously to see which one performs better in terms of user engagement, error rates, or other KPIs.
+
+
+
+
+
+- is traffic between namespaces separated in Kubernetes?
+avatar
+Claude
+
+In Kubernetes, traffic between namespaces is not inherently separated or isolated by default. However, Kubernetes provides mechanisms to control and isolate network traffic between namespaces if needed. Here's a detailed explanation:
+
+    Default Behavior:
+        By default, pods in different namespaces can communicate with each other freely.
+        There's no built-in network isolation between namespaces.
+
+    Network Policies:
+        Kubernetes Network Policies can be used to control traffic flow between pods, including across namespaces.
+        Network Policies are namespace-scoped resources that define rules for ingress and egress traffic.
+
 
 
 - By default Kubernetes uses default compute engine SA. What can you do to fine-grain permissions for Kubernetes
@@ -312,7 +410,7 @@ For VM-based workloads, you'll use an Instance Group Manager that scales based o
 
 
 - What is a headless service and what it's purpose?
-It is used for discovering individual pods(especially IPs) which allows another service to interact directly with the Pods instead of a proxy
+It is used for discovering individual pods(especially IPs) which allows another service to interact directly with the Pods instead of a proxy.
 - Service types and differences?
 NodePort, LoadBalancer, ExternalName, and ClusterIP
 
@@ -355,7 +453,8 @@ In summary, while there are exceptions, the general recommendation is to deploy 
 
 
 
-Difference between liveness and readiness probe?
+- Difference between liveness and readiness probe?
+
 
 
 ## HELM
